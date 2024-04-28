@@ -6,6 +6,11 @@ import cors from 'cors';
 /* import { Logger } from 'logger'; */
 
 import pool from "./db/db.js";
+import clientRouter from './routes/clientRouter.js';
+import projectRouter from './routes/projectRouter.js';
+import sponsorRouter from './routes/sponsorRouter.js';
+
+
 
 const app = express();
 /* const PORT = process.env.PORT || 3000; */
@@ -18,6 +23,9 @@ app.use(cors());
 
 //manage routes
 app.use('/', loginRouter);
+app.use('/clients', clientRouter);
+app.use('/projects', projectRouter);
+app.use('/sponsors', sponsorRouter);
 
 pool.query('SELECT 1', (err, res) => {
     if (err) {
