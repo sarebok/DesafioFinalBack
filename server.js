@@ -1,4 +1,6 @@
 //create basic server
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import loginRouter from "./routes/loginRouter.js";
 import cors from 'cors';
@@ -9,7 +11,7 @@ import pool from "./db/db.js";
 import clientRouter from './routes/clientRouter.js';
 import projectRouter from './routes/projectRouter.js';
 import sponsorRouter from './routes/sponsorRouter.js';
-
+import eventRouter from './routes/eventRouter.js';
 
 
 const app = express();
@@ -26,6 +28,8 @@ app.use('/', loginRouter);
 app.use('/clients', clientRouter);
 app.use('/projects', projectRouter);
 app.use('/sponsors', sponsorRouter);
+app.use('/events', eventRouter);
+
 
 pool.query('SELECT 1', (err, res) => {
     if (err) {
