@@ -12,6 +12,7 @@ import clientRouter from './routes/clientRouter.js';
 import projectRouter from './routes/projectRouter.js';
 import sponsorRouter from './routes/sponsorRouter.js';
 import eventRouter from './routes/eventRouter.js';
+import eventIdRouter from './routes/eventIdRouter.js';
 
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
@@ -51,6 +52,7 @@ app.use('/clients', clientRouter);
 app.use('/projects', projectRouter);
 app.use('/sponsors', sponsorRouter);
 app.use('/events', eventRouter);
+app.use('/event/', eventIdRouter);
 
 
 pool.query('SELECT 1', (err, res) => {
