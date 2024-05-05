@@ -32,7 +32,7 @@ const options = {
       description: 'A simple Express API',
     },
   },
-  apis: ['./routes/*.js'], // files containing annotations as above
+  apis: ['./routes/*.js', './swagger.js'], // include swagger.js here
 };
 
 const specs = swaggerJsdoc(options);
