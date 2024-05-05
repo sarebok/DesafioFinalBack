@@ -13,9 +13,31 @@ import projectRouter from './routes/projectRouter.js';
 import sponsorRouter from './routes/sponsorRouter.js';
 import eventRouter from './routes/eventRouter.js';
 
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
+
 
 const app = express();
 /* const PORT = process.env.PORT || 3000; */
+
+
+//for swagger
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'My API',
+      version: '1.0.0',
+      description: 'A simple Express API',
+    },
+  },
+  apis: ['./routes/*.js'], // files containing annotations as above
+};
+
+const specs = swaggerJsdoc(options);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 
 const PORT = 3000;
 //include basic middleware
